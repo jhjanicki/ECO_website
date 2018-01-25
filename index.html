@@ -1,0 +1,1089 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OIST ECO Club</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,800,800i" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+
+/*******
+GENERAL
+*******/
+
+body{
+     font-family: 'PT Sans', sans-serif;
+}
+a:hover{
+     cursor:pointer !important;
+}
+.inline{
+     display:inline;
+}
+ .events, .blogposts, #pageFooter{
+     padding:30px;
+}
+ section {
+     padding: 8rem 0;
+}
+
+.text-primary {
+	color: #6bbaa7 !important;
+}
+
+.margintop20{
+	margin-top:20px;
+}
+
+/*******
+LOGO
+*******/
+
+ #logo{
+     height:100%;
+     position:absolute;
+     top:0px;
+     right:0px;
+     padding-bottom:5px;
+     z-index:100;
+}
+
+/*******
+NAV
+*******/
+
+ #nav{
+     position:fixed;
+     z-index:100;
+     width:100%;
+     top: 0px;
+}
+ .show-menu {
+     width: 100%;
+     text-align: left;
+     box-sizing: border-box;
+     padding: 20px;
+}
+ #nav ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     background: white;
+     border-bottom:1px solid #ededed;
+}
+ #nav li {
+     float: left;
+}
+ nav li a, .dropdown-btn {
+     display: inline-block;
+     color: black;
+     text-align: center;
+     padding: 18px 22px;
+     text-decoration: none;
+     font-size:20px;
+}
+ #nav li a:hover, .dropdown1:hover .dropdown-btn {
+     background-color: #fefefe;
+     color: #b4dbc0;
+     text-decoration: none;
+     -webkit-transition: color .2s linear;
+     -moz-transition: color .2s linear;
+     transition: color .2s linear;
+}
+ li.dropdown1 {
+     display: block;
+     z-index:100;
+}
+ .dropdown-menu1 {
+     position:absolute;
+     display: none;
+     width: 100%;
+     max-width: 200px;
+    /* not working, why? works only when I add position absolute, why?*/
+     background-color: white;
+     color:black;
+     border: 1px solid #ededed;
+     margin-top:-10px;
+}
+ .dropdown-menu1 a {
+     color: black;
+     padding: 18px 22px;
+     text-decoration: none;
+     display: block;
+     text-align: left;
+}
+ .dropdown-menu1 a:hover {
+     background-color: #fefefe;
+     color: #218380;
+}
+/* menu will only display on hover */
+ .dropdown1:hover .dropdown-menu1 {
+     display: block;
+     -webkit-transition: display 1s linear;
+     -moz-transition: display 1s linear;
+     transition: display 1s linear;
+}
+/* burger navigation icon with cross effects*/
+ #burger-container {
+     position: relative;
+     display: none;
+     margin-top: 10px;
+     float: left;
+}
+ #burger {
+     cursor: pointer;
+     display: block;
+}
+ #burger span {
+     background: black;
+     display: block;
+     height: 5px;
+     width: 50px;
+     margin-bottom: 3px;
+     position: relative;
+     transitions: all ease-in-out 0.4s;
+}
+/* open class - toggle using jquery*/
+ #burger-container.open span:nth-child(2), #burger-container.open span:nth-child(3) {
+     width: 0;
+    /* collapse 2nd and 3rd span*/
+     opacity: 0;
+}
+/*makes the 1st and 4th span cross over each other*/
+ #burger-container.open span:nth-child(4) {
+     transform: rotate(45deg);
+     top: -10px;
+}
+ #burger-container.open span:nth-child(1) {
+     transform: rotate(-45deg);
+     top: 15px;
+}
+
+
+/*************
+HEADER SECTION
+**************/
+
+ #gallery{
+     overflow: auto;
+     background-color:#e6e7e8;
+}
+ div.modern {
+     max-width:1170px;
+     width: 80%;
+     margin-left: auto;
+     margin-right: auto;
+     position: relative;
+     clear:both 
+}
+ .modern div.post {
+     position: relative;
+     width: 100%;
+     margin: 40px 0 100px 0;
+     padding: 0 0 0 0;
+     float: left;
+}
+ .ghost, .imgwrap.ghost{
+     background-color: #ffffff;
+}
+ .item {
+     z-index: 2;
+}
+ .tranz, #nav {
+     -webkit-transition: all .5s ease;
+     -moz-transition: all .5s ease;
+     transition: all .5s ease;
+}
+ .modern div.post .entryhead {
+     width: 60%;
+     display: block;
+     margin: 0 0 0 0;
+     float: right;
+     position: relative;
+     z-index: 0;
+}
+ .entryhead {
+     width: 100%;
+     float: left;
+     margin: 0 0 0 0;
+     position: relative;
+}
+ .modern div.post .item_inn {
+     width: 40%;
+     margin: 80px -5% 0 0;
+     padding: 50px 60px;
+     float: left;
+     position: relative;
+     z-index: 1;
+}
+ .modern .item .item_inn h2 {
+     margin-top: 0px;
+}
+ h2.posttitle {
+     margin: 35px 0 20px 0;
+}
+ .modern div.post p.meta {
+     float: left;
+     margin-bottom: 25px;
+}
+ .meta.cat {
+     padding: 0 0;
+}
+ .meta, .meta_more, .meta a {
+     line-height: 17px;
+     font-weight: 400;
+     font-style: italic;
+     color: #6b6b6b;
+     font-size: 13px;
+     opacity: 1;
+     visibility: visible;
+     -webkit-transition: opacity 0.24s ease-in-out;
+     -moz-transition: opacity 0.24s ease-in-out;
+     transition: opacity 0.24s ease-in-out;
+}
+ p.meta_more {
+     overflow: hidden;
+     padding: 8px 0;
+     margin: 10px 0 5px 0;
+}
+ .meta {
+     line-height: 2;
+     overflow: hidden;
+     margin: 10px 10px 0 0;
+}
+ .meta, .meta_more, .meta a, #portfolio-filter a {
+     font-family: "Playfair Display";
+     line-height: 17px;
+     font-weight: 400;
+     font-style: italic;
+     color: #6b6b6b;
+     font-size: 13px;
+     opacity: 1;
+     visibility: visible;
+     -webkit-transition: opacity 0.24s ease-in-out;
+     -moz-transition: opacity 0.24s ease-in-out;
+     transition: opacity 0.24s ease-in-out;
+}
+ .hrline, .hrlineB {
+     clear: both;
+     width: 100%;
+     margin: 30px 0 30px 0;
+     padding: 0;
+     height: 1px;
+     position: relative;
+}
+ .hrline:after {
+     width: 25px;
+     height: 1px;
+     position: absolute;
+     top: 0;
+     left: 0;
+     background-color: #484856;
+     content: '';
+}
+ .modern .item p.teaser {
+     margin: 20px 0;
+     overflow: hidden;
+     clear: both;
+     color: #6bbaa7;
+}
+ img, .imgwrap{
+     max-width: 100%;
+}
+ .modern div.post p.meta_more {
+     opacity: 0;
+}
+ p.meta_more {
+     padding: 8px 0;
+     margin: 10px 0 5px 0;
+}
+
+/*************
+EVENT SECTION
+**************/
+ 
+ #eventsection{
+     background-color:#c9cdd1;
+     padding:0 0 100px 0;
+}
+ #eventinner{
+     margin-top:80px;
+     background-color:white;
+      max-width:1170px;
+     width:80%;
+     margin-left:auto;
+     margin-right:auto;
+}
+ .event-list {
+     list-style: none;
+     margin: 0px;
+     padding:30px 0;
+}
+ .event-list > li {
+     position: relative;
+     display: block;
+     width: 100%;
+     height: 120px;
+     padding: 0px;
+     background-color: rgb(255, 255, 255);
+     box-shadow: 0px 0px 5px rgb(51, 51, 51);
+     box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+     padding: 0px;
+     margin: 0px 0px 20px;
+     cursor:pointer;
+}
+ .event-list > li > time {
+     display: inline-block;
+     width: 100%;
+     color: #fff;
+     background-color: #b4dbc0;
+     padding: 5px;
+     text-align: center;
+     text-transform: uppercase;
+}
+ .event-list > li:nth-child(even) > time {
+     background-color: #6bbaa7;
+}
+
+ .event-list > li > time > .day {
+     display: block;
+     font-size: 60px;
+     font-weight: 100;
+     line-height: 1;
+     padding-top:10px;
+}
+ .event-list > li time > .month {
+     display: block;
+     font-size: 24pt;
+     font-weight: 900;
+     line-height: 1;
+}
+ .event-list > li > time, .event-list > li > img {
+     display: inline-block;
+}
+ .event-list > li > time, .event-list > li > img {
+     width: 120px;
+     float: left;
+}
+ .event-list > li > .info {
+     background-color: rgb(245, 245, 245);
+     overflow: hidden;
+}
+ .event-list > li > time, .event-list > li > img {
+     width: 120px;
+     height: 120px;
+     padding: 0px;
+     margin: 0px;
+}
+ .event-list > li > .info {
+     position: relative;
+     height: 120px;
+     text-align: left;
+     padding:0 5px;
+}
+ .event-list > li > .info > .title{
+     padding: 15px 0 0 20px;
+}
+
+ .event-list > li > .info > .desc {
+     padding: 10px 0 0 20px;
+}
+ .event-list > li > .info > ul {
+     position: absolute;
+     left: 0px;
+     bottom: 0px;
+}
+
+ .event-list > li > .info > .title {
+     font-size: 24px;
+     font-weight: 700;
+     margin: 0px;
+}
+ .event-list > li > .info > .desc {
+     font-size: 20px;
+     font-weight: 300;
+     margin: 0px;
+}
+
+ .event-list > li > .info > ul > li > a {
+     display: block;
+     width: 100%;
+     color: rgb(30, 30, 30);
+     text-decoration: none;
+}
+
+ .event-list > li > .info > ul > li:hover {
+     color: rgb(30, 30, 30);
+     background-color: rgb(200, 200, 200);
+}
+
+.event-list h2 a{
+	color:black;
+}
+
+.event-list h2 a:hover{
+	color: #b4dbc0;
+    text-decoration: none;
+    cursor:pointer;
+    transition: color 0.5s linear;
+}
+
+/**************
+PROJECT SECTION
+***************/
+ .service-box {
+     max-width: 400px;
+}
+ #projects{
+     padding: 100px 0 100px 0;
+     margin-bottom:40px;
+}
+/***********
+BLOG SECTION
+************/
+ #blogsection{
+     background-color:#e6e7e8;
+     padding:0 0 100px 0;
+}
+ #bloginner{
+     max-width:1170px;
+     width:80%;
+     margin-left:auto;
+     margin-right:auto;
+     margin-top:80px;
+}
+ .blogpostsinner{
+     width: 100%;
+     overflow: hidden;
+     position: relative;
+     padding: 0 0;
+}
+ #recentposts{
+     background-color:white;
+}
+ .post{
+     position: relative;
+     width: 100%;
+     margin: 0 0 1px 0;
+     padding: 50px 0 0 0;
+     float: left;
+     overflow: hidden;
+}
+ .titlethr{
+     height:3px;
+     background-color:black;
+     max-width:80px;
+     align:left;
+     margin-left:0;
+}
+ .postseperatorhr{
+     height:0.5px;
+     background-color:lightgray;
+     width:100%;
+     clear: both;
+}
+ 
+ .post h2{
+     line-height: 36px;
+     font-weight: 700;
+     font-style: normal;
+     color: #222222;
+     font-size: 30px;
+     opacity: 1;
+     margin: 35px 0 20px 0;
+     visibility: visible;
+     -webkit-transition: opacity 0.24s ease-in-out;
+     -moz-transition: opacity 0.24s ease-in-out;
+     transition: opacity 0.24s ease-in-out;
+}
+ .post a{
+     color:black;
+}
+ .date{
+     color:white;
+     padding:5px;
+     font-family: 'Alegreya Sans', sans-serif;
+}
+
+/*************
+MORE POSTS
+**************/
+ .archives ul {
+     list-style: none;
+     margin: 0 0 30px 0;
+     overflow: hidden;
+     float: left;
+     width: 100%;
+     padding: 50px 0 0 0;
+}
+ .archives a{
+     color: black;
+     text-decoration: none;
+}
+
+.archives a:hover {
+    color: #b4dbc0;
+    text-decoration: none;
+    cursor:pointer;
+    transition: color 0.5s linear;
+}
+
+ .tab-post h4 {
+     margin: 15px 0 10px 0;
+     font-family: Raleway;
+     line-height: 24px;
+     font-weight: 600;
+     font-style: normal;
+     color: #222;
+     font-size:20px;
+     opacity: 1;
+     visibility: visible;
+     -webkit-transition: opacity 0.24s ease-in-out;
+     -moz-transition: opacity 0.24s ease-in-out;
+     transition: opacity 0.24s ease-in-out;
+}
+
+
+
+
+/****************
+CHALLENGE SECTION
+*****************/
+
+#challenge{
+     padding:0 30px 30px 30px;
+}
+#challenge a{
+     color: black;
+     text-decoration: none;
+}
+ ul.featured li {
+     list-style: none !important;
+     padding: 0 0 !important;
+     margin: 0 0 !important;
+     display: block;
+}
+ ul.featured li:first-child div {
+     padding: 0 0 20px 0;
+}
+ .tab-post {
+     min-height: 100px;
+     overflow: hidden;
+     border-bottom: 1px solid #ddd;
+     margin: 0 0 0 0;
+     padding: 30px 0 15px 0;
+     line-height: 18px;
+     width: 100%;
+     position: relative;
+}
+#challenge p.challengetext {
+	font-family: Raleway;
+	line-height: 20px;
+     font-weight: 300;
+     font-size:18px;
+}
+#challenge p.meta {
+     font-size:18px !important;
+     color: red;
+     font-family: 'Raleway';
+}
+
+
+/*************
+FOOTER SECTION
+**************/
+ 
+ .submit{
+     border: 1px solid black;
+     color: black;
+     padding: 10px 10px;
+     font-size: 16px;
+     font-weight:600;
+     min-width: 50px;
+     margin-left:10px;
+     background:white;
+}
+ .submit:hover{
+     transition: 0.5s linear;
+     background:black;
+     color:white;
+     cursor:pointer;
+}
+
+#pageFooter p{
+	margin-top:14px; /* hack but not sure what's up */
+}
+
+
+ @media (max-width: 992px){
+     .modern div.post .entryhead img {
+         float: none;
+         display: block;
+         margin: 0 auto;
+         max-width: 100%;
+         position: relative;
+         z-index: 0;
+    }
+     .entryhead img, .blogger .item .imgwrap img, .entryhead iframe {
+         max-width: 100% !important;
+         float: none;
+         margin: 0 auto;
+    }
+     isotopefolio .item, .isotopeblog .item, .homeblog > .post, .blogger .item, .archivloop>div, .modern div.post, .modern div.post .entryhead, .modern div.post .item_inn {
+         width: 100% !important;
+         padding: 0 0 !important;
+         margin: 0 auto 20px auto !important;
+         float: none !important;
+         border: none !important;
+/*          max-width: 300px !important; */
+         height: auto !important;
+         overflow: hidden;
+    }
+     .modern div.post .item_inn, .blogger div.post .item_inn, .isotopeblog > .post .item_inn, .isotopeblog > .page .item_inn, .entry {
+         padding: 20px 20px !important;
+    }
+     .modern .item .item_inn h2 {
+         font-size: 20px !important;
+    }
+}
+ @media (max-width: 767px) {
+     .event-list {
+         list-style: none;
+         font-family: 'Raleway', sans-serif;
+         margin: 0px;
+         padding: 0px;
+    }
+     .event-list > li {
+         background-color: rgb(255, 255, 255);
+         box-shadow: 0px 0px 5px rgb(51, 51, 51);
+         box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+         padding: 0px;
+         margin: 0px 0px 20px;
+         cursor: pointer;
+         height: auto;
+    }
+     .event-list > li > time {
+         display: inline-block;
+         width: 100%;
+         padding: 5px;
+         text-align: center;
+         text-transform: uppercase;
+    }
+     .event-list > li > time > .day {
+         display: block;
+         font-size: 56px;
+         font-weight: 100;
+         line-height: 1;
+    }
+     .event-list > li time > .month {
+         display: block;
+         font-size: 20px;
+         font-weight: 900;
+         line-height: 1;
+    }
+     .event-list > li > .info {
+         padding-top: 5px;
+         text-align: center;
+    }
+     .event-list > li > .info > .title {
+         font-size: 16px;
+         font-weight: 700;
+         margin: 0px;
+         padding: 5px 0 0 0;
+    }
+     .event-list > li > .info > .desc {
+         font-size: 14px;
+         font-weight: 300;
+         margin: 0px;
+         padding: 5px 0 0 0;
+    }
+     #copy{
+         margin-top:50px;
+    }
+    
+    #pageFooter p{
+		margin-top:30px;
+	}
+}
+/* media queries for responsiveness */
+ @media only screen and (max-width: 640px) {
+    /* displays the burger nav */
+     #burger-container {
+         display: block;
+         margin: 20px;
+    }
+    /* open and close toggle */
+     nav ul {
+         height: 0;
+    }
+     .show {
+         height: 23.5em;
+    }
+    /* moves the content down the screen to give way to the nav */
+     .move {
+         position: relative;
+         top: 22em;
+    }
+    /* nav items */
+     nav ul, nav:active ul {
+         position: relative;
+         width: 100%;
+         box-sizing: border-box;
+         display: block;
+    }
+     nav ul li {
+         box-sizing: border-box;
+         width: 100%;
+    }
+     .dropdown-menu1 {
+         display: block;
+         width:100%;
+         max-width:100%;
+         border-top:1px solid #ededed;
+    }
+    /* hides the 'More' link and instead shows all the hidden link */
+     .more {
+         display: none;
+    }
+    /* hover styling */
+     li a:hover, .dropdown1:hover {
+         width: 100%;
+         text-align: left;
+         display: block;
+    }
+     .dropdown1:hover .dropdown-menu1 {
+         display: block;
+         width: 100%;
+         text-align: left;
+    }
+     #nav{
+         position:absolute;
+         z-index:100;
+         background-color: white;
+    }
+     #nav ul{
+         border:none;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div id="content">
+   <nav id="nav">
+      <!--  for the burger nav button    -->
+      <div id="burger-container">
+         <div id="burger">
+            <span>&nbsp;</span>
+            <span>&nbsp;</span>
+            <span>&nbsp;</span>
+            <span>&nbsp;</span>
+         </div>
+      </div>
+      <!--  nav items    -->
+      <ul class="menu">
+         <li><a href="#">Home</a></li>
+         <li><a href="#">Events</a></li>
+         <li><a href="#">Blog</a></li>
+         <li class="dropdown1">
+            <a class="dropdown-btn more" href="#">Projects</a>
+            <div class="dropdown-menu1">
+               <a href="#">Plastic Bag Exhibition</a>
+               <a href="#">Reusable Kit Raffle</a>
+            </div>
+         </li>
+      </ul>
+      <div class="show-menu">
+         <img src="./img/eco.svg" class="img-responsive" id="logo"/>
+      </div>
+   </nav>
+   <div class="content">
+      <div id="gallery">
+         <div class="modern">
+            <div class="item ghost tranz post">
+               <div class="entryhead">
+                  <div class="imgwrap">
+                     <a class="imglink" href="#">
+                     <img src="./img/header.jpg" class="tranz" alt="" />                                        
+                     </a>
+                  </div>
+               </div>
+               <!-- end .entryhead -->
+               <div class="item_inn tranz">
+                  <h2 class="posttitle">Environmentally Conscious OISTers</h2>
+                  <div class="hrline"></div>
+                  <p class="tranz">Mission statement can go here...</p>
+                  <p>Skateboard keytar drinking vinegar pabst tattooed slow-carb. Af street art hammock, cardigan umami disrupt pickled meh man bun cornhole next level chia whatever activated charcoal everyday carry. Quinoa ramps hashtag, air plant lumbersexual pour-over fixie butcher kitsch pop-up semiotics.</p>
+                  <p class="meta_more">
+                     <a href="#">Read more <i class="fa fa-long-arrow-right"></i></a>
+                  </p>
+               </div>
+               <!-- end .item_inn -->
+               <div class="spacer" style="clear: both;"></div>
+            </div>
+            <!-- end modern -->
+         </div>
+         <!-- end gallery -->
+      </div>
+      <section id="eventsection">
+         <br>
+         <div id="eventinner">
+            <div class="row events">
+               <div class="col-xs-12 col-lg-8">
+                  <h2>Upcoming Events</h2>
+                  <hr class="titlethr">
+                  <ul class="event-list">
+                     <li>
+                        <time datetime="2018-03-04">
+                        <span class="day">03</span>
+                        <span class="month">Mar</span>
+                        <span class="year">2018</span>
+                        <span class="time">2:00 pm</span>
+                        </time>
+                        <img alt="shark art show" src="./img/e1.png" />
+                        <div class="info">
+                           <h2 class="title"><a href="#">Sharks & Rays Art Show</a></h2>
+                           <p class="desc">Text text text text</p>
+                        </div>
+                     </li>
+                     <li>
+                        <time datetime="2018-01-26">
+                        <span class="day">28</span>
+                        <span class="month">Jan</span>
+                        <span class="year">2018</span>
+                        <span class="time">10:00 am</span>
+                        </time>
+                        <div class="info">
+                           <h2 class="title"><a href="#">Community Yoga (Fundraiser)</a></h2>
+                           <p class="desc">Text text text text</p>
+                        </div>
+                     </li>
+                     <li>
+                        <time datetime="2018-01-26">
+                        <span class="day">26</span>
+                        <span class="month">Jan</span>
+                        <span class="year">2018</span>
+                        <span class="time">5:00 pm</span>
+                        </time>
+                        <div class="info">
+                           <h2 class="title"><a href="#">OIST Activities Fair</a></h2>
+                           <p class="desc">Text text text text</p>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+               <div class="col-xs-12 col-lg-4">
+                  <div id="challenge">
+                     <h2>Monthly Challenge</h2>
+                     <hr class="titlethr">
+                     <div class="tab-post item p-border">
+                        <a href="#" title="#">
+                        <img class="img-fluid" src="./img/c1.png" class="grayscale grayscale-fade wp-post-image" alt="" />
+                        </a>
+                        <h4>
+                        Reduce your plastic waste! </h4>
+                        <p class="challengetext">
+                        1. Bring reusable bags to shop <br> 2. Use reusable water bottles and mugs<br> 3. Use reusable straws or say no to straws.
+                        </p>
+                        <p class="meta tranz">
+                           If not you are killing sea turtles!
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="projects">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 text-center">
+                  <h2 class="section-heading">Facts</h2>
+                  <hr class="my-4">
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-3 col-md-6 text-center">
+                  <div class="service-box mt-5 mx-auto">
+                     <i class="fa fa-2x fa-cube text-primary"></i>
+                     <h3 class="mb-3">5 trillion plastic bags produced yearly</h3>
+                     <p class="text-muted mb-0">5 trillion plastic bags are being produced yearly. The amount of plastic produced in one year is about the same as the entire weight of humanity</p>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6 text-center">
+                  <div class="service-box mt-5 mx-auto">
+                     <i class="fa fa-2x fa-star-half-full text-primary"></i>
+                     <h3 class="mb-3">5.25 trillion pieces of plastic trash</h3>
+                     <p class="text-muted mb-0">There are 5.25 trillion pieces of plastic trash in the ocean. Each year, 7 billion kg is being added to the count</p>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6 text-center">
+                  <div class="service-box mt-5 mx-auto">
+                     <i class="fa fa-2x fa-remove text-primary"></i>
+                     <h3 class="mb-3">Many species are being affected</h3>
+                     <p class="text-muted mb-0">Ingestion and entanglement of marine debris affects over 267 animal species</p>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6 text-center">
+                  <div class="service-box mt-5 mx-auto">
+                     <i class="fa fa-2x fa-frown-o text-primary"></i>
+                     <h3 class="mb-3">Many animals die every year</h3>
+                     <p class="text-muted mb-0">Tens of thousands of sharks, rays, sea turtles, seabirds, seals, whales die every year from contact with ocean-borne plastic bags</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="blogsection">
+         <br>
+         <div id="bloginner">
+            <div id="recentposts">
+               <div class="row blogposts">
+                  <div class="col-xs-12 col-lg-8" class="blogpostsinner">
+                     <h2> Recent Posts </h2>
+                     <hr class="titlethr">
+                     <div class="post">
+                        <img class="img-fluid" src="./img/beach.jpg" class="" />  
+                        <div class="postinner">
+                           <h2><a href="#" title="">Beach Cleanups Around Onna</a></h2>
+                           <div class="hrline"></div>
+                           <p class="meta meta_full ">
+                              <span class="post-date"><i class="fa fa-clock-o text-primary"></i> January 18, 2018</span>
+                              <span class="comm"><i class="fa fa-comment text-primary"></i> <a href="#">Comments (0)</a></span>
+                              <span class="categs"><i class="fa fa-star-o text-primary"></i> <a href="#" rel="category">Cleanup</a>, <a href="#" rel="category">Plastic Pollution</a></span>
+                              <span class="meta likes"><a href="#" class="jm-post-like" title="Like"> <i class="fa fa-heart text-primary"></i>&nbsp;25</a></span>
+                           </p>
+                           <p class="margintop20"><a href="#"> Lorem ipsum dolor amet whatever freegan subway tile kitsch bushwick. Authentic semiotics post-ironic selfies. Biodiesel seitan forage pinterest photo booth neutra bespoke farm-to-table. Fixie man bun jianbing man braid stumptown locavore meh hell of. </p>
+                           <p> Distillery succulents retro, hella dreamcatcher fingerstache woke coloring book mlkshk pork belly meh jean shorts. Crucifix kale chips hexagon, blue bottle ugh truffaut freegan air plant unicorn pickled succulents keytar. Waistcoat hexagon craft beer organic taiyaki woke iPhone messenger bag. Organic deep v tattooed chicharrones asymmetrical locavore.</p>
+                           <p class="meta_more">
+                              <a href="#">Read more <i class="fa fa-long-arrow-right"></i></a>
+                           </p>
+                        </div>
+                     </div>
+                     <hr class="postseperatorhr">
+                     <div class="post">
+                        <img class="img-fluid" src="./img/plastic1.jpg" class="" />  
+                        <div class="postinner">
+                           <h2><a href="#" title="">Plastic Bag Exhibition & Related Posters</a></h2>
+                           <div class="hrline"></div>
+                           <p class="meta meta_full ">
+                              <span class="post-date"><i class="fa fa-clock-o text-primary"></i> November 19, 2017</span>
+                              <span class="comm"><i class="fa fa-comment text-primary"></i> <a href="#">Comments (0)</a></span>
+                              <span class="categs"><i class="fa fa-star-o text-primary"></i> <a href="#" rel="category">Exhibition</a>, <a href="#" rel="category">Plastic Pollution</a></span>
+                              <span class="meta likes"><a href="#" class="jm-post-like" title="Like"> <i class="fa fa-heart text-primary"></i>&nbsp;17</a></span>
+                           </p>
+                           <p class="margintop20">Distillery hexagon celiac air plant organic. Aesthetic fingerstache authentic, blog affogato meh viral meggings. Echo park vegan cardigan, lo-fi mumblecore portland craft beer lyft umami waistcoat readymade beard tattooed. XOXO kinfolk mustache activated charcoal cray vice asymmetrical lomo brunch poutine kombucha.</p>
+                           <p>Cray skateboard activated charcoal meditation VHS. Chillwave tilde kombucha wayfarers post-ironic actually meh microdosing ugh put a bird on it cold-pressed. Direct trade waistcoat craft beer kombucha man braid kickstarter. Jean shorts skateboard pok pok asymmetrical pinterest la croix chillwave. Pug bespoke shaman chillwave thundercats jianbing humblebrag iPhone. Pabst 3 wolf moon chillwave microdosing hammock drinking vinegar messenger bag artisan offal brunch taxidermy retro. Ethical coloring book keffiyeh truffaut.</p>
+                           <p class="meta_more">
+                              <a href="#">Read more <i class="fa fa-long-arrow-right"></i></a>
+                           </p>
+                        </div>
+                     </div>
+                     <hr class="postseperatorhr">
+                     <div class="post">
+                        <img class="img-fluid" src="./img/ocean.jpg" class="" />  
+                        <div class="postinner">
+                           <h2><a href="#" title="">Forming ECO Club at OIST</a></h2>
+                           <div class="hrline"></div>
+                           <p class="meta meta_full">
+                              <span class="post-date"><i class="fa fa-clock-o text-primary"></i> October 1, 2017</span>
+                              <span class="comm"><i class="fa fa-comment text-primary"></i> <a href="#">Comments (0)</a></span>
+                              <span class="categs"><i class="fa fa-star-o text-primary"></i> <a href="#" rel="category">Announcement</a></span>
+                              <span class="meta likes"><a href="#" class="jm-post-like" title="Like"> <i class="fa fa-heart text-primary"></i>&nbsp;20</a></span>
+                           </p>
+                           <p class="margintop20">Skateboard keytar drinking vinegar pabst tattooed slow-carb. Af street art hammock, cardigan umami disrupt pickled meh man bun cornhole next level chia whatever activated charcoal everyday carry. Quinoa ramps hashtag, air plant lumbersexual pour-over fixie butcher kitsch pop-up semiotics. Tattooed affogato kitsch, irony tofu schlitz tote bag squid bicycle rights pabst fixie coloring book. Plaid lo-fi roof party chillwave tbh. Banh mi cornhole gentrify, aesthetic venmo mustache man bun pork belly shabby chic chia retro scenester umami. Chambray deep v four loko, photo booth enamel pin neutra poke craft beer schlitz gluten-free tumeric umami.</p>
+                           <p class="meta_more">
+                              <a href="#">Read more <i class="fa fa-long-arrow-right"></i></a>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xs-12 col-lg-4">
+                     <div class="archives">
+                        <h2>Featured Projects</h2>
+                        <hr class="titlethr">
+                        <ul class="featured">
+                        <li>
+                           <div class="tab-post item p-border">
+                              <a href="#" title="">
+                              <img class="img-fluid" src="./img/p1.png" alt="" />
+                              </a>
+                              <h4><a href="#" title=""><i class="fa fa-newspaper-o"></i> Plastic bag collection & exhibition</a></h4>
+                              <p class="meta date tranz ">
+                                 September 11, 2014 
+                              </p>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="tab-post item p-border">
+                              <a href="#" title="">
+                              <img class="img-fluid" src="./img/p2.png"  alt="" />
+                              </a>
+                              <h4><a href="" title=""><i class="fa fa-newspaper-o"></i> Reusable life-kit raffle for rejecting plastic bags</a></h4>
+                              <p class="meta date tranz ">
+                                 December 12, 2013 
+                              </p>
+                           </div>
+                        </li>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <footer id="pageFooter">
+         <div class="row">
+            <div class="col-xs-12 col-md-4">
+               <form action="#" method="post" class="search-form text-center">
+                  <input type="search" placeholder="Search" title="Search" class="inline" name="search" id="search">
+                  <input type="submit" class="submit inline" value="Go" name="submit">
+               </form>
+            </div>
+            <div class="col-xs-12 col-md-4">
+               <p class="text-center" id="copy">&copy; OIST ECO Club 2018</p>
+            </div>
+            <div class="col-xs-12 col-md-4">
+            </div>
+         </div>
+      </footer>
+   </div>
+</div>
+<!-- end content -->
+<script>
+
+$(document).ready(function() {
+  $("#burger-container").on("click", function() {
+    $("#burger-container").toggleClass("open"),
+      $("nav ul").toggleClass("show"),
+      $(".content").toggleClass("move"); //onclick 'this' -> burger-container toggles with a class of 'open'
+  });
+  
+  
+  
+ if($( window ).innerWidth() > 640){
+  	var menuHeight = $("#nav ul").outerHeight();
+  	$('#nav').css('height', menuHeight); 
+  	$('#gallery').css('padding-top', menuHeight); //this works if desktop version is loaded first
+ } else{
+  	$('#nav').css('height', '67px'); 
+  	$('#gallery').css('padding-top', '67px'); 
+  	$('.modern').css('padding-top', '40px'); 
+  	$('.modern').css('padding-bottom', '80px'); 
+
+ }
+
+  
+  
+});
+</script>
+</body>
+</html>
